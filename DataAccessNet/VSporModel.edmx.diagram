@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a36e9a943da941b5b447effc093efc1f" Name="Diagram1">
+        <EntityTypeShape EntityType="u8264564_EBil22Model.BlogCategorys" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="u8264564_EBil22Model.BlogDetails" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="u8264564_EBil22Model.Blogs" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="u8264564_EBil22Model.BlogSimilars" Width="1.5" PointX="2.75" PointY="3.75" />
+        <EntityTypeShape EntityType="u8264564_EBil22Model.Business" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="u8264564_EBil22Model.Content" Width="1.5" PointX="4.75" PointY="3.75" />
+        <EntityTypeShape EntityType="u8264564_EBil22Model.ContentCategory" Width="1.5" PointX="6.75" PointY="0.75" />
+        <EntityTypeShape EntityType="u8264564_EBil22Model.Images" Width="1.5" PointX="0.75" PointY="6.75" />
+        <EntityTypeShape EntityType="u8264564_EBil22Model.Location" Width="1.5" PointX="2.75" PointY="6.75" />
+        <EntityTypeShape EntityType="u8264564_EBil22Model.MemberRoles" Width="1.5" PointX="6.75" PointY="3.75" />
+        <EntityTypeShape EntityType="u8264564_EBil22Model.Members" Width="1.5" PointX="4.75" PointY="6.75" />
+        <EntityTypeShape EntityType="u8264564_EBil22Model.Roles" Width="1.5" PointX="6.75" PointY="6.75" />
+        <EntityTypeShape EntityType="u8264564_EBil22Model.RouteModels" Width="1.5" PointX="8.75" PointY="0.75" />
+        <EntityTypeShape EntityType="u8264564_EBil22Model.Saloons" Width="1.5" PointX="8.75" PointY="3.75" />
+        <EntityTypeShape EntityType="u8264564_EBil22Model.SaloonTypes" Width="1.5" PointX="8.75" PointY="6.75" />
+        <EntityTypeShape EntityType="u8264564_EBil22Model.Services" Width="1.5" PointX="6.75" PointY="9.75" />
+        <EntityTypeShape EntityType="u8264564_EBil22Model.ServicesBusiness" Width="1.5" PointX="8.75" PointY="9.75" />
+        <EntityTypeShape EntityType="u8264564_EBil22Model.sysdiagrams" Width="1.5" PointX="10.75" PointY="0.75" />
+        <EntityTypeShape EntityType="u8264564_EBil22Model.WorkerRoles" Width="1.5" PointX="10.75" PointY="3.75" />
+        <EntityTypeShape EntityType="u8264564_EBil22Model.Workers" Width="1.5" PointX="10.75" PointY="6.75" />
+        <EntityTypeShape EntityType="u8264564_EBil22Model.WorkerType" Width="1.5" PointX="10.75" PointY="10.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

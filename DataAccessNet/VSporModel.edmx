@@ -1,0 +1,705 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="u8264564_EBil22Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BlogCategorys">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="300" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BlogDetails">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BlogId" Type="int" Nullable="false" />
+          <Property Name="SummartContent" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Content" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="MemberId" Type="int" />
+        </EntityType>
+        <EntityType Name="Blogs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BlogCategoryId" Type="int" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="AddDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdateDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BlogSimilars">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BlogId" Type="int" Nullable="false" />
+          <Property Name="SimilarBlogId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Business">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BusinessName" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="LocationId" Type="int" Nullable="false" />
+          <Property Name="Phone" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Fax" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Content">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ContentCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BussinessId" Type="int" Nullable="false" />
+          <Property Name="SaloonId" Type="int" Nullable="false" />
+          <Property Name="ContentId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Images">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RefenceTypeId" Type="int" Nullable="false" />
+          <Property Name="RefenceId" Type="int" Nullable="false" />
+          <Property Name="Path" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Link" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="IsDefault" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="DisplayName" Type="nvarchar" MaxLength="255" />
+          <Property Name="SearchVolume" Type="float" />
+          <Property Name="IsActive" Type="float" />
+          <Property Name="ParentCategoryId" Type="float" />
+          <Property Name="IsHoliday" Type="float" />
+          <Property Name="IsImportant" Type="float" />
+          <Property Name="IsLink" Type="float" />
+          <Property Name="Level" Type="float" />
+          <Property Name="LocLevel1" Type="float" />
+          <Property Name="LocLevel2" Type="float" />
+          <Property Name="LocLevel3" Type="nvarchar" MaxLength="255" />
+          <Property Name="LocLevel4" Type="nvarchar" MaxLength="255" />
+          <Property Name="LocLevel5" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="MemberRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleId" Type="tinyint" Nullable="false" />
+          <Property Name="MemberId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Members">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Surname" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Phone" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RouteModels">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Url" Type="nvarchar(max)" />
+          <Property Name="PageType" Type="nchar" MaxLength="10" />
+          <Property Name="Rld" Type="nvarchar(max)" />
+          <Property Name="Refld" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Saloons">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BussinessId" Type="int" Nullable="false" />
+          <Property Name="SaloonTypeId" Type="smallint" Nullable="false" />
+          <Property Name="M2" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SaloonTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Services">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ServicesBusiness">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BusinessId" Type="int" Nullable="false" />
+          <Property Name="ServiceId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="WorkerRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="WorkerId" Type="int" Nullable="false" />
+          <Property Name="TypeId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Workers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TCNo" Type="varchar" MaxLength="30" />
+          <Property Name="PassportNo" Type="varchar" MaxLength="30" />
+          <Property Name="BirthDate" Type="date" Nullable="false" />
+          <Property Name="Cv" Type="varchar" MaxLength="500" />
+          <Property Name="BusinessId" Type="int" Nullable="false" />
+          <Property Name="OpenAddress" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="WorkerType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="u8264564_EBil22ModelStoreContainer">
+          <EntitySet Name="BlogCategorys" EntityType="Self.BlogCategorys" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BlogDetails" EntityType="Self.BlogDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Blogs" EntityType="Self.Blogs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BlogSimilars" EntityType="Self.BlogSimilars" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Business" EntityType="Self.Business" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Content" EntityType="Self.Content" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ContentCategory" EntityType="Self.ContentCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Images" EntityType="Self.Images" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Location" EntityType="Self.Location" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MemberRoles" EntityType="Self.MemberRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Members" EntityType="Self.Members" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RouteModels" EntityType="Self.RouteModels" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Saloons" EntityType="Self.Saloons" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SaloonTypes" EntityType="Self.SaloonTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Services" EntityType="Self.Services" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ServicesBusiness" EntityType="Self.ServicesBusiness" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WorkerRoles" EntityType="Self.WorkerRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Workers" EntityType="Self.Workers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WorkerType" EntityType="Self.WorkerType" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="u8264564_EBil22Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="VSporEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BlogCategorys" EntityType="u8264564_EBil22Model.BlogCategorys" />
+          <EntitySet Name="BlogDetails" EntityType="u8264564_EBil22Model.BlogDetails" />
+          <EntitySet Name="Blogs" EntityType="u8264564_EBil22Model.Blogs" />
+          <EntitySet Name="BlogSimilars" EntityType="u8264564_EBil22Model.BlogSimilars" />
+          <EntitySet Name="Business" EntityType="u8264564_EBil22Model.Business" />
+          <EntitySet Name="Content" EntityType="u8264564_EBil22Model.Content" />
+          <EntitySet Name="ContentCategory" EntityType="u8264564_EBil22Model.ContentCategory" />
+          <EntitySet Name="Images" EntityType="u8264564_EBil22Model.Images" />
+          <EntitySet Name="Location" EntityType="u8264564_EBil22Model.Location" />
+          <EntitySet Name="MemberRoles" EntityType="u8264564_EBil22Model.MemberRoles" />
+          <EntitySet Name="Members" EntityType="u8264564_EBil22Model.Members" />
+          <EntitySet Name="Roles" EntityType="u8264564_EBil22Model.Roles" />
+          <EntitySet Name="RouteModels" EntityType="u8264564_EBil22Model.RouteModels" />
+          <EntitySet Name="Saloons" EntityType="u8264564_EBil22Model.Saloons" />
+          <EntitySet Name="SaloonTypes" EntityType="u8264564_EBil22Model.SaloonTypes" />
+          <EntitySet Name="Services" EntityType="u8264564_EBil22Model.Services" />
+          <EntitySet Name="ServicesBusiness" EntityType="u8264564_EBil22Model.ServicesBusiness" />
+          <EntitySet Name="sysdiagrams" EntityType="u8264564_EBil22Model.sysdiagrams" />
+          <EntitySet Name="WorkerRoles" EntityType="u8264564_EBil22Model.WorkerRoles" />
+          <EntitySet Name="Workers" EntityType="u8264564_EBil22Model.Workers" />
+          <EntitySet Name="WorkerType" EntityType="u8264564_EBil22Model.WorkerType" />
+        </EntityContainer>
+        <EntityType Name="BlogCategorys">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="BlogDetails">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BlogId" Type="Int32" Nullable="false" />
+          <Property Name="SummartContent" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Content" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MemberId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Blogs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BlogCategoryId" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="AddDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="BlogSimilars">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BlogId" Type="Int32" Nullable="false" />
+          <Property Name="SimilarBlogId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Business">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BusinessName" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="LocationId" Type="Int32" Nullable="false" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Content">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ContentCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BussinessId" Type="Int32" Nullable="false" />
+          <Property Name="SaloonId" Type="Int32" Nullable="false" />
+          <Property Name="ContentId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Images">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RefenceTypeId" Type="Int32" Nullable="false" />
+          <Property Name="RefenceId" Type="Int32" Nullable="false" />
+          <Property Name="Path" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Link" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="IsDefault" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="DisplayName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="SearchVolume" Type="Double" />
+          <Property Name="IsActive" Type="Double" />
+          <Property Name="ParentCategoryId" Type="Double" />
+          <Property Name="IsHoliday" Type="Double" />
+          <Property Name="IsImportant" Type="Double" />
+          <Property Name="IsLink" Type="Double" />
+          <Property Name="Level" Type="Double" />
+          <Property Name="LocLevel1" Type="Double" />
+          <Property Name="LocLevel2" Type="Double" />
+          <Property Name="LocLevel3" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="LocLevel4" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="LocLevel5" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="MemberRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleId" Type="Byte" Nullable="false" />
+          <Property Name="MemberId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Members">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Surname" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="RouteModels">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Url" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PageType" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Rld" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Refld" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Saloons">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BussinessId" Type="Int32" Nullable="false" />
+          <Property Name="SaloonTypeId" Type="Int16" Nullable="false" />
+          <Property Name="M2" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SaloonTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Services">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ServicesBusiness">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BusinessId" Type="Int32" Nullable="false" />
+          <Property Name="ServiceId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="WorkerRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="WorkerId" Type="Int32" Nullable="false" />
+          <Property Name="TypeId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Workers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TCNo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="PassportNo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="BirthDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Cv" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="BusinessId" Type="Int32" Nullable="false" />
+          <Property Name="OpenAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="WorkerType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="u8264564_EBil22ModelStoreContainer" CdmEntityContainer="VSporEntities">
+          <EntitySetMapping Name="BlogCategorys">
+            <EntityTypeMapping TypeName="u8264564_EBil22Model.BlogCategorys">
+              <MappingFragment StoreEntitySet="BlogCategorys">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BlogDetails">
+            <EntityTypeMapping TypeName="u8264564_EBil22Model.BlogDetails">
+              <MappingFragment StoreEntitySet="BlogDetails">
+                <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="SummartContent" ColumnName="SummartContent" />
+                <ScalarProperty Name="BlogId" ColumnName="BlogId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Blogs">
+            <EntityTypeMapping TypeName="u8264564_EBil22Model.Blogs">
+              <MappingFragment StoreEntitySet="Blogs">
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="AddDate" ColumnName="AddDate" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="BlogCategoryId" ColumnName="BlogCategoryId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BlogSimilars">
+            <EntityTypeMapping TypeName="u8264564_EBil22Model.BlogSimilars">
+              <MappingFragment StoreEntitySet="BlogSimilars">
+                <ScalarProperty Name="SimilarBlogId" ColumnName="SimilarBlogId" />
+                <ScalarProperty Name="BlogId" ColumnName="BlogId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Business">
+            <EntityTypeMapping TypeName="u8264564_EBil22Model.Business">
+              <MappingFragment StoreEntitySet="Business">
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+                <ScalarProperty Name="BusinessName" ColumnName="BusinessName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Content">
+            <EntityTypeMapping TypeName="u8264564_EBil22Model.Content">
+              <MappingFragment StoreEntitySet="Content">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContentCategory">
+            <EntityTypeMapping TypeName="u8264564_EBil22Model.ContentCategory">
+              <MappingFragment StoreEntitySet="ContentCategory">
+                <ScalarProperty Name="ContentId" ColumnName="ContentId" />
+                <ScalarProperty Name="SaloonId" ColumnName="SaloonId" />
+                <ScalarProperty Name="BussinessId" ColumnName="BussinessId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Images">
+            <EntityTypeMapping TypeName="u8264564_EBil22Model.Images">
+              <MappingFragment StoreEntitySet="Images">
+                <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Path" ColumnName="Path" />
+                <ScalarProperty Name="RefenceId" ColumnName="RefenceId" />
+                <ScalarProperty Name="RefenceTypeId" ColumnName="RefenceTypeId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Location">
+            <EntityTypeMapping TypeName="u8264564_EBil22Model.Location">
+              <MappingFragment StoreEntitySet="Location">
+                <ScalarProperty Name="LocLevel5" ColumnName="LocLevel5" />
+                <ScalarProperty Name="LocLevel4" ColumnName="LocLevel4" />
+                <ScalarProperty Name="LocLevel3" ColumnName="LocLevel3" />
+                <ScalarProperty Name="LocLevel2" ColumnName="LocLevel2" />
+                <ScalarProperty Name="LocLevel1" ColumnName="LocLevel1" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="IsLink" ColumnName="IsLink" />
+                <ScalarProperty Name="IsImportant" ColumnName="IsImportant" />
+                <ScalarProperty Name="IsHoliday" ColumnName="IsHoliday" />
+                <ScalarProperty Name="ParentCategoryId" ColumnName="ParentCategoryId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="SearchVolume" ColumnName="SearchVolume" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MemberRoles">
+            <EntityTypeMapping TypeName="u8264564_EBil22Model.MemberRoles">
+              <MappingFragment StoreEntitySet="MemberRoles">
+                <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Members">
+            <EntityTypeMapping TypeName="u8264564_EBil22Model.Members">
+              <MappingFragment StoreEntitySet="Members">
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="u8264564_EBil22Model.Roles">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RouteModels">
+            <EntityTypeMapping TypeName="u8264564_EBil22Model.RouteModels">
+              <MappingFragment StoreEntitySet="RouteModels">
+                <ScalarProperty Name="Refld" ColumnName="Refld" />
+                <ScalarProperty Name="Rld" ColumnName="Rld" />
+                <ScalarProperty Name="PageType" ColumnName="PageType" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Saloons">
+            <EntityTypeMapping TypeName="u8264564_EBil22Model.Saloons">
+              <MappingFragment StoreEntitySet="Saloons">
+                <ScalarProperty Name="M2" ColumnName="M2" />
+                <ScalarProperty Name="SaloonTypeId" ColumnName="SaloonTypeId" />
+                <ScalarProperty Name="BussinessId" ColumnName="BussinessId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SaloonTypes">
+            <EntityTypeMapping TypeName="u8264564_EBil22Model.SaloonTypes">
+              <MappingFragment StoreEntitySet="SaloonTypes">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Services">
+            <EntityTypeMapping TypeName="u8264564_EBil22Model.Services">
+              <MappingFragment StoreEntitySet="Services">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServicesBusiness">
+            <EntityTypeMapping TypeName="u8264564_EBil22Model.ServicesBusiness">
+              <MappingFragment StoreEntitySet="ServicesBusiness">
+                <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
+                <ScalarProperty Name="BusinessId" ColumnName="BusinessId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="u8264564_EBil22Model.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WorkerRoles">
+            <EntityTypeMapping TypeName="u8264564_EBil22Model.WorkerRoles">
+              <MappingFragment StoreEntitySet="WorkerRoles">
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+                <ScalarProperty Name="WorkerId" ColumnName="WorkerId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Workers">
+            <EntityTypeMapping TypeName="u8264564_EBil22Model.Workers">
+              <MappingFragment StoreEntitySet="Workers">
+                <ScalarProperty Name="OpenAddress" ColumnName="OpenAddress" />
+                <ScalarProperty Name="BusinessId" ColumnName="BusinessId" />
+                <ScalarProperty Name="Cv" ColumnName="Cv" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="PassportNo" ColumnName="PassportNo" />
+                <ScalarProperty Name="TCNo" ColumnName="TCNo" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WorkerType">
+            <EntityTypeMapping TypeName="u8264564_EBil22Model.WorkerType">
+              <MappingFragment StoreEntitySet="WorkerType">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,156 @@
+﻿@using VSporMVC.Models;
+@model WorkersTanimlama
+
+
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">
+        <div class="card card-primary card-outline">
+            <div class="card-header">
+                <h3 class="card-title">Yeni Ekle</h3>
+            </div> <!-- /.card-body -->
+            <div class="card-body">
+                <div>
+                    <section class="content">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-xs-12">
+                                <form action="KaydetTanim" method="post">
+                                    <div class="box box-info">
+
+                                        <!-- /.box-header -->
+                                        <!-- form start -->
+                                        <div class="form-horizontal">
+                                            <div class="box-body">
+                                                <input id="questionSetId" type="hidden" />
+
+                                                <div class="form-group">
+                                                    <label for="setType" class="col-sm-2 control-label">Çalışan Tipi</label>
+
+                                                    <div class="col-sm-10">
+                                                        <input type="text" class="form-control" id="TCNo" name="TCNo" placeholder="T.C Kimlik Numarası: " required asp-for="TCNo">
+                                                        <input type="text" class="form-control" id="PassportNo" name="PassportNo" placeholder="Passaport Numarası: " required asp-for="PassportNo">
+                                                        <input type="text" class="form-control" id="BirthDate" name="BirthDate" placeholder="Doğum Tarihi: " required asp-for="BirthDate">
+                                                        <input type="text" class="form-control" id="Cv" name="Cv" placeholder="Cv: " required asp-for="Cv">
+                                                        <input type="text" class="form-control" id="BusinessId" name="BusinessId" placeholder="İşletme ID: " required asp-for="BusinessId">
+                                                        <input type="text" class="form-control" id="OpenAddress" name="OpenAddress" placeholder="Açık Adres: " required asp-for="OpenAddress">
+
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-sm-12">
+
+                                                        <button type="submit" class="btn btn-info pull-right">Kaydet</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+
+                                <div class="box box-danger">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title">Çalışan Tipleri</h3>
+                                    </div>
+                                    <div class="box-body">
+                                        <table id="blogKategoriList" class="table table-bordered table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Çalışan Tipi</th>
+                                                    <th></th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+                                                @if (Model != null && Model.List != null)
+                                                {
+                                                    @foreach (var item in Model.List)
+                                                    {
+                                                        <tr>
+                                                            <td>@item.TCNo </td>
+                                                            <td>@item.PassportNo </td>
+                                                            <td>@item.BirthDate </td>
+                                                            <td>@item.Cv </td>
+                                                            <td>@item.BusinessId </td>
+                                                            <td>@item.OpenAddress </td>
+                                                           
+                                                            
+                                                            <td><a data-toggle="modal" data-target="#guncelleModal2" title="guncelle" class="btn btn-warning" onclick="Func_Load_Divguncellemodal(@item.Id)">Güncelle</a></td>
+                                                            <td><a data-toggle="modal" data-target="#silModal2" title="sil" class="btn btn-danger" onclick="Func_Load_Divsilmodal(@item.Id)">Sil</a></td>
+                                                            
+@*                                                            <td><button style="width:90px" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#silModal"><i class="fa-solid fa-trash-can"></i> Sil</button></td>
+*@                                                            <td><a href="@Url.Action("SilTanim", "Workers", new { id = @item.Id })">Sil</a> </td>
+                                                        </tr>
+                                                    }
+                                                }
+
+                                            </tbody>
+                                        </table>
+
+
+                                        <!--yeni eklenen-->
+                                        <div id="guncelleModal2" class="modal fade" role="dialog">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                        <h4 class="modal-title"> </h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="divguncellemodal">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div id="silModal2" class="modal fade" role="dialog">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                        <h4 class="modal-title"> </h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="divsilmodal">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                       
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </section>
+
+                </div>
+            </div><!-- /.card-body -->
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+<script>
+
+    function Func_Load_Divguncellemodal(id) {
+        $.get("/Workers/GuncelleTanimPartialView?Id=" + id, function (res) {
+               $(".divguncellemodal").html(res);
+        });
+    }
+    
+    function Func_Load_Divsilmodal(id) {
+        $.get("/Workers/SilTanimPartialView?Id=" + id, function (res) {
+               $(".divsilmodal").html(res);
+        });
+    }
+      
+   
+</script>
+
+
+
+

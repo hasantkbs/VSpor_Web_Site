@@ -1,0 +1,41 @@
+﻿@using VSporMVC.Models;
+@model WorkersTanimlama
+
+
+
+<form action="GuncelleTanim" method="post">
+    <div class="box box-info">
+       
+        <!-- /.box-header -->
+        <!-- form start -->
+        <div class="form-horizontal">
+            <div class="box-body">
+                <input type="hidden" id="Id" name="Id" asp-for="Id">
+                <div class="form-group">
+                    <label for="setType" class="control-label">Kategori Adı</label>
+
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="TCNo" name="TCNo" placeholder="Kategori Adı" required asp-for="TCNo">
+                        <input type="text" class="form-control" id="PassportNo" name="PassportNo" placeholder="Kategori Adı" required asp-for="PassportNo">
+                        <input type="text" class="form-control" id="BirthDate" name="BirthDate" placeholder="Kategori Adı" required asp-for="BirthDate">
+                        <input type="text" class="form-control" id="Cv" name="Cv" placeholder="Kategori Adı" required asp-for="Cv">
+                        <input type="text" class="form-control" id="BusinessId" name="BusinessId" placeholder="Kategori Adı" required asp-for="BusinessId">
+                        <input type="text" class="form-control" id="OpenAddress" name="OpenAddress" placeholder="Kategori Adı" required asp-for="OpenAddress">
+                        
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-12">
+
+                        <button type="submit" class="btn btn-info pull-right">Güncelle</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+
+
+
+

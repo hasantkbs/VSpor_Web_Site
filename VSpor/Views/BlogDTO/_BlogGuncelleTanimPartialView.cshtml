@@ -1,0 +1,66 @@
+﻿@model VSporMVC.Models.BlogSimilarDetailsDTO;
+
+<form action="GuncelleTanim" method="post">
+    <div class="box box-info">
+       
+        <!-- /.box-header -->
+        <!-- form start -->
+        <div class="form-horizontal">
+            <div class="box-body">
+                <input type="hidden" id="BlogId" name="BlogId" asp-for="BlogId">
+                <div class="form-group">
+
+                    <div class="form-group">
+                        <label for="setType" class="control-label">Blog Id</label>
+                        <div>
+                            <input type="text" class="form-control" id="BlogId" name="BlogId" asp-for="BlogId" placeholder="BlogId" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="setType" class="control-label">Similar Blog Id</label>
+
+                        <div>
+                            <input type="text" class="form-control" id="SimilarBlogId" name="SimilarBlogId" asp-for="SimilarBlogId" placeholder="SimilarBlogId" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="setType" class="control-label">Başlık</label>
+
+                        <div>
+                            <input type="text" class="form-control" id="title" name="title" asp-for="Title" placeholder="Başlık Adı" required>
+                        </div>
+                    </div>
+
+                    <label for="setType" class="control-label">İçerik</label>
+                    <textarea id="summernote" name="Content" asp-for="Content">
+                                                                    
+                    </textarea>
+
+                    <div class="form-group">
+                        <label for="setType" class="control-label">Özet İçerik</label>
+
+                        <div>
+                            <textarea id="SummartContent" name="SummartContent" asp-for="SummartContent" style="width:100%;">
+                                                                    
+                            </textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-12">
+
+                        <button type="submit" class="btn btn-info pull-right">Güncelle</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+
+
+
+
